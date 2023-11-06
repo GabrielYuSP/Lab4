@@ -11,16 +11,19 @@ def main():
         x = switch.read_slide_switch()
 
         if x == 1:
-            led.set_output(0, 1)
-            time.sleep(0.1)
-            led.set_output(0, 0)
-            time.sleep(0.1)
+            led.set_output(0,0)
 
         else:
-            led.set_output(0, 1)
-            time.sleep(0.05)
-            led.set_output(0, 0)
-            time.sleep(0.05)
+            startTime = time.time()
+            while (time.time()-startTime < 5):
+                led.set_output(0, 1)
+                time.sleep(0.1)
+                led.set_output(0, 0)
+                time.sleep(0.1)
+
+            while switch.read_slide_switch == 0:
+                led.set_output(0, 0)
+
 
 if __name__ == "__main__":
     main()
