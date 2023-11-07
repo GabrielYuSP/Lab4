@@ -12,14 +12,18 @@ def main():
 
         if x == 1:
             led.set_output(0,0)
+            time.sleep(0.1)
+            led.set_output(0, 1)
+            time.sleep(0.1)
 
         else:
-            startTime = time.time()
-            while (time.time()-startTime < 5):
+            startTime = 0
+            while (startTime < 5):
                 led.set_output(0, 1)
                 time.sleep(0.1)
                 led.set_output(0, 0)
                 time.sleep(0.1)
+                startTime += 1
 
             while switch.read_slide_switch == 0:
                 led.set_output(0, 0)
